@@ -10,7 +10,7 @@ error_reporting(-1);
 $db = new SQLite3('betcoin.db');
 
 function isLoggedIn() {
-	if (isset($_COOKIE['user']) && in_array($_COOKIE['user'], $users)) {
+	if (isset($_COOKIE['uid']) ) {
 		return true;
 	}
 	return false;

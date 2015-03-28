@@ -1,3 +1,11 @@
+<?php
+include 'include.php';
+
+if (isLoggedIn()) {
+	header('Location: http://localhost/home.php');
+}
+?>
+
 <!doctype html>
 <html>
   <head>

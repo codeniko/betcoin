@@ -17,7 +17,14 @@ function openLoginModal() {
         return console.log('Cancelled');
       }
       console.log('Username', data.username, 'Password', data.password);
-
+		$.post( "login.php", { username: data.username, password: data.password})
+			.done(function( res ) {
+				console.log("login.php result: " + res);
+				if (res == "true")
+					window.location.href = "/home.html";
+				else 
+					alert("Invalid login credentials");
+			});
     }
   });
 }

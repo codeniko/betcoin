@@ -4,12 +4,16 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
-@app.route('/profile', methods=['GET'])
+@app.route('/home', methods=['GET'])
 def about():
-    return render_template('profile.html')
+    return render_template('home.html')
+
+@app.route('/findBet', methods=['GET'])
+def findBet():
+    return render_template('findBet.html')
 
 if __name__=='__main__':
     port = int(os.environ.get("PORT", 3000))

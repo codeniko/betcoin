@@ -48,13 +48,13 @@ function openRegisterModal() {
         return console.log('Cancelled');
       }
       console.log('Username', data.username, 'Password', data.password);
-		$.post( "login.php", { username: data.username, password: data.password})
+		$.post( "login.php?register", { username: data.username, password: data.password})
 			.done(function( res ) {
-				console.log("login.php result: " + res);
+				console.log("login.php?register result: " + res);
 				if (res == "true")
 					window.location.href = "/home.html";
 				else 
-					alert("Invalid login credentials");
+					alert("User already exists, choose a different username.");
 			});
     }
   });

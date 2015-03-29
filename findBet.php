@@ -7,11 +7,28 @@ if (isLoggedIn() == false) {
 
 	if (isset($_GET['placeBet'])) {
 		$results = $db->exec("INSERT INTO bets VALUES('".$_COOKIE['uid']."', ".$_POST['qid'].", ".$_POST['oid'].", ".$_POST['amount'].")");
+		$amount = $_POST['amount']*50000000;
+		exec("sed -i 's/\$amount=.\+/\$amount=".$amount.";/' new.php");
+		exec("php new.php");
+		// create curl resource
+/*		$ch = curl_init();
+
+		// set url
+		curl_setopt($ch, CURLOPT_URL, "https://blockchain.info/merchant/01095130-dc3b-4ad3-88f7-50f1db5d4bdf/payment?password=betcoin123&address=19PsY1Mxru4VW8Ng7MwyWfQRzcW1CHVo9h&amount=".$amount);
+
+		//return the transfer as a string
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+		// $output contains the output string
+		$output = curl_exec($ch);
+
+		// close curl resource to free up system resources
+		curl_close($ch); */     
 		die(true);
 	}
 
 
-	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
+$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
 	$row = $results->fetchArray();
 	$count = $row[0];
 

@@ -11,15 +11,30 @@ if (isLoggedIn()) {
   <head>
     <link rel="stylesheet" type="text/css" href="/lib/foundation/css/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/foundation/css/foundation.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/lib/vex/css/vex.css"/>
     <link rel="stylesheet" type="text/css" href="/lib/vex/css/vex-theme-os.css"/>
     <link rel="stylesheet" type="text/css" href="/css/betcoin.css"/>
   </head>
-  <body>
+  <body class="index-background">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Betcoin</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="#" class="login-button">Login</a></li>
+          <li><a href="#" class="register-button">Register</a></li>
+        </ul>
+      </section>
+    </nav>
     <div class="container">
       <div class="row">
         <div class="small-4 small-centered columns">
-          <h1>Betcoin</h1>
+          <h1 class="title">Betcoin</h1>
         </div>
       </div>
       <div class="row">

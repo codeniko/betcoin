@@ -1,13 +1,42 @@
 body {
-  background-image: url("/static/images/escheresque.png");
+  background-image: url("../images/escheresque.png");
+}
+
+.index-background {
+  background-image: url("../images/bitcoin.png");
 }
 
 h1 {
   text-align: center;
-  color: white;
+  color: #333333;
 }
 
 .container {
-
+  margin: 70px;
 }
 
+.button {
+  background-color: #333333;
+}
+
+.button:hover {
+  background-color: #008CBA;
+}
+
+.title:hover {
+  color: #008CBA;
+}
+
+.title {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.home {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.home:hover {
+  color: #008CBA;
+}

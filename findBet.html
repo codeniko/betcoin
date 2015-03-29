@@ -51,7 +51,7 @@
       </div>
       <div class="row">
         <div class="small-4 small-centered columns">
-          <a href="#" class="expand button">Next</a>
+          <a href="#" class="expand button" onclick="getRandomBet()">Next</a>
         </div>
       </div>
     </div>
@@ -81,10 +81,15 @@ function openCreateBetModal() {
         return console.log('Cancelled');
       }
       // CHANGE THISSSSSS
-      console.log('Date', data.date, 'Time', data.time);
-      return $('.demo-result-custom-vex-dialog').show().html(
+      /*return $('.demo-result-custom-vex-dialog').show().html(
         "<h4>Result</h4>\n<p>\n Date: <b>" + data.date + "</b><br/>\n " +
-        "Time: <input type=\"time\" value=\"" + data.time + "\" readonly />\n</p>");
+        "Time: <input type=\"time\" value=\"" + data.time + "\" readonly />\n</p>");*/
+		$.post( "findBet.php?placeBet", { qid: global_qid, oid: data.bet, amount: data.amount})
+			.done(function( res ) {
+				console.log("findBet.php?placeBet result: " + res);
+				getRandomBet(global_qid);
+				//window.location.href = "/findBet.html"; //TODO// MAKE IT PHP and open directly to questions created
+			});
     }
   });
 }
@@ -95,8 +100,15 @@ $('.place-bet-button').click(function() {
 });
 
 	var options;
+	var global_qid;
 		
-	function getRandomBet() {
+
+	function getRandomBet(qid) {
+//if qid set, get specific qid
+		var url = "findBet.php";
+		if (qid != undefined)
+			url = "findBet.php?qid="+qid;
+
 		$.post( "findBet.php", {})
 			.done(function(data) {
 				console.log("findBet.php result: " + data);
@@ -107,9 +119,11 @@ $('.place-bet-button').click(function() {
 				var obj = jQuery.parseJSON(data);
 				var currentPot = 0;
 				for (var i = 0; i < obj.bets.length; i++)
-					currentPot += obj.bets[i];
+					currentPot += obj.bets[i].amount;
 				$("#curPot").html("Current Pot: "+currentPot+" bitcoins");
 				$("#curQuestion").html(obj.question);
+				$("#numBets").html("Number of bets: " + obj.bets.length);
+				global_qid = obj.qid;
 				$("#betEnds").html("Bet Ends: " + obj.endstamp);
 				options = obj.options;
 			});

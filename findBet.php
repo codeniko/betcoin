@@ -5,10 +5,12 @@ if (isLoggedIn() == false) {
 	die();
 }
 
-/*if (isset($_GET['count'])) { // count of how many are still active
-	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
-} else { // return some random bet
- */
+	if (isset($_GET['placeBet'])) {
+		$results = $db->exec("INSERT INTO bets VALUES('".$_COOKIE['uid']."', ".$_POST['qid'].", ".$_POST['oid'].", ".$_POST['amount'].")");
+		die(true);
+	}
+
+
 	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
 	$row = $results->fetchArray();
 	$count = $row[0];
@@ -21,6 +23,13 @@ if (isLoggedIn() == false) {
 	$i = 0;
 	$rowQ = 0;
 	while ($rowQ = $results->fetchArray()) {
+		if (isset($_GET['qid'])) {
+		  if ($_GET['qid'] == $rowQ['rowid']) {
+			  break;
+		  } else {
+				continue;
+		  }
+		}
 		if ($i >= $random) {
 			break;
 		}
@@ -30,7 +39,7 @@ if (isLoggedIn() == false) {
 	$rowU = $results->fetchArray();
 	$results = $db->query("SELECT * FROM options WHERE qid = ".$rowQ['rowid']);
 	
-		echo '{"question":"'.$rowQ['question'].'", "ownerUID":'.$rowQ['owner'].', "owner":"'.$rowU['user'].'", "endstamp":"'.$rowQ['endstamp'].'", "options":[';
+		echo '{"qid":'.$rowQ['rowid'].', "question":"'.$rowQ['question'].'", "ownerUID":'.$rowQ['owner'].', "owner":"'.$rowU['user'].'", "endstamp":"'.$rowQ['endstamp'].'", "options":[';
 	$i = 0;
 	while ($rowO = $results->fetchArray()) {
 		if ($i > 0)

@@ -5,11 +5,17 @@ if (isLoggedIn() == false) {
 	die();
 }
 
-if (isset($_GET['count'])) { // count of how many are still active
+/*if (isset($_GET['count'])) { // count of how many are still active
 	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
 } else { // return some random bet
+ */
 	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
-	$count = $results->fetchArray();
+	$row = $results->fetchArray();
+	$count = $row[0];
+
+	if ($count == 0)
+		die("none");
+
 	$random = rand(0, $count-1); //return the values of this row
 	$results = $db->query("SELECT rowid, * FROM questions WHERE ended = 0");
 	$i = 0;
@@ -43,6 +49,16 @@ if (isset($_GET['count'])) { // count of how many are still active
 	}
 	
 echo ']}';
+
+/*
+{
+	"question": "test bet",
+		"ownerUID": 2,
+		"owner": "joyce",
+		"endstamp": "2015-03-29 00:03",
+		"options": ["test1", "test2", "hi"],
+		"bets": []
 }
+* */
 
 ?>

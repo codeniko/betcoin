@@ -6,11 +6,12 @@ if (isLoggedIn() == false) {
 	die();
 }
 
-if (isset($_GET['getWinsLoss'])) {
-	$results  = $db->query("SELECT * FROM users WHERE rowid = '".$_COOKIE['uid']."'");
+if (isset($_GET['getUserInfo'])) {
+	$results  = $db->query("SELECT rowid, * FROM users WHERE rowid = '".$_COOKIE['uid']."'");
 	$row = $results->fetchArray();
-	die('{"wins":'.$row['wins'].', "losses":'.$row['losses'].'}');
+	die('{"uid":'.$row['rowid'].', "user":"'.$row['user'].'", "wins":'.$row['wins'].', "losses":'.$row['losses'].'}');
 }
+
 
 if (isset($_GET['createBet'])) {
 	//question, endstamp
@@ -30,7 +31,7 @@ if (isset($_GET['createBet'])) {
 	die($questionId); // returns inserted id of question for redirection
 }
 
-//home.php?getWinsLoss 
+//home.php?getUserInfo
 
-//{"wins":232, "losses":3432}
+//{"uid":2, "user":"joyce", "wins":232, "losses":3432}
 ?>

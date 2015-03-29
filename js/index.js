@@ -21,7 +21,7 @@ function openLoginModal() {
 			.done(function( res ) {
 				console.log("login.php result: " + res);
 				if (res == "true")
-					window.location.href = "/home.html";
+					window.location.href = "/home.php";
 				else 
 					alert("Invalid login credentials");
 			});

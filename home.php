@@ -35,3 +35,81 @@ if (isset($_GET['createBet'])) {
 
 //{"uid":2, "user":"joyce", "wins":232, "losses":3432}
 ?>
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="lib/foundation/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/foundation/css/foundation.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="lib/vex/css/vex.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/vex/css/vex-theme-os.css"/>
+    <link rel="stylesheet" type="text/css" href="css/betcoin.css"/>
+  </head>
+  <body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Betcoin</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="logout.php" class="logout-button">Logout</a></li>
+        </ul>
+      </section>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <h1 class="welcome subtitle">Welcome, User</h1>
+      </div>
+      <div class="row">
+        <div class="small-4 small-centered columns">
+			<?php 
+				if ($_COOKIE['uid'] == 1)
+					echo '<img src="images/niko.jpg">';
+				else if ($_COOKIE['uid'] == 2)
+					echo '<img src="images/profile.jpg">';
+				else if ($_COOKIE['uid'] == 3)
+					echo '<img src="images/apexa.jpg">';
+				else if ($_COOKIE['uid'] == 4)
+					echo '<img src="images/frank.jpg">';
+			?>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 small-centered columns">
+          <div class="stats">
+            <h1 class="subtitle">10 - 2</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 small-centered columns">
+          <a href="findBet.html" class="expand button find-bet-button">Find a Bet</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 small-centered columns">
+          <a href="#" class="expand button create-bet-button">Create a New Bet</a>
+        </div>
+      </div>
+    </div>
+    <script src="/lib/jquery-1.11.2.js"></script>
+    <script src="/lib/vex/js/vex.combined.min.js"></script>
+    <script src="/js/createBet.js"></script>
+    <script>
+      getUserInfo();
+      function getUserInfo() {
+        $.post("home.php?getUserInfo", {}).done(function(data) {
+          if (data == "none") {
+            return;
+          }
+          var obj = jQuery.parseJSON(data);
+          $(".welcome.subtitle").html("Welcome, " + obj.user + "!");
+          $(".stats .subtitle").html(obj.wins + " - " + obj.losses);
+        });
+      }
+    </script>
+  </body>
+</html>

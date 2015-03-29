@@ -35,7 +35,7 @@ if (isLoggedIn() == false) {
 		if ($i > 0)
 			echo ',';
 		$i++;
-		echo '"'.$rowO['option'].'"';
+		echo '{"oid":'.$rowO['oid'].', "option":"'.$rowO['option'].'"}';
 	}
 
 	echo '], "bets":[';
@@ -56,7 +56,7 @@ echo ']}';
 		"ownerUID": 2,
 		"owner": "joyce",
 		"endstamp": "2015-03-29 00:03",
-		"options": ["test1", "test2", "hi"],
+		"options": [{"oid":2, "option":"test1"}, "test2", "hi"],
 		"bets": []
 }
 * */

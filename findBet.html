@@ -35,8 +35,44 @@
     </div>
     <script src="/lib/jquery-1.11.2.js"></script>
     <script src="/lib/vex/js/vex.combined.min.js"></script>
-    <script src="/js/findBet.js"></script>
 	 <script>
+
+function openCreateBetModal() {
+	optionString = "";
+	for (var i = 0; i < options.length; i++) {
+		optionString += "<input type=\"radio\" name=\"bet\" value=\""+ options[i].oid + "\" id=\"bet\"><label for=\"bet\">" + options[i].option + "</label>";
+	}
+
+
+  vex.defaultOptions.className = 'vex-theme-os';
+  var todayDateString;
+  todayDateString = new Date().toJSON().slice(0, 10);
+  vex.dialog.open({
+    message: 'Create a Bet:',
+    input: "<label for=\"amount\">Amount</label>\n <input name=\"amount\" " +
+      "type=\"text\" placeholder=\"How much are you betting?\" required />\n" +
+      "<label for=\"choices\"> Select a choice</label>\n " +
+		optionString,
+
+    callback: function(data) {
+      if (data === false) {
+        return console.log('Cancelled');
+      }
+      // CHANGE THISSSSSS
+      console.log('Date', data.date, 'Time', data.time);
+      return $('.demo-result-custom-vex-dialog').show().html(
+        "<h4>Result</h4>\n<p>\n Date: <b>" + data.date + "</b><br/>\n " +
+        "Time: <input type=\"time\" value=\"" + data.time + "\" readonly />\n</p>");
+    }
+  });
+}
+
+
+$('.place-bet-button').click(function() {
+  openCreateBetModal();
+});
+
+	var options;
 		
 	function getRandomBet() {
 		$.post( "findBet.php", {})
@@ -52,6 +88,7 @@
 					currentPot += obj.bets[i];
 				$("#curPot").html("Current Pot: "+currentPot+" bitcoins");
 				$("#curQuestion").html(obj.question);
+				options = obj.options;
 			});
 	}
 

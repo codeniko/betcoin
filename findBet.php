@@ -24,6 +24,7 @@ if (isLoggedIn() == false) {
 		if ($i >= $random) {
 			break;
 		}
+		$i++;
 	}
 	$results = $db->query("SELECT * FROM users WHERE rowid = ".$rowQ['owner']);
 	$rowU = $results->fetchArray();

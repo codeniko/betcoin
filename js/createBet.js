@@ -23,7 +23,7 @@ function openCreateBetModal() {
 		$.post( "home.php?createBet", { question: data.bet, endstamp: data.date + " " + data.time, options: data.choices })
 			.done(function( res ) {
 				console.log("home.php?createBet result: " + res);
-				//window.location.href = "/findBet.html"; //TODO// MAKE IT PHP and open directly to questions created
+				window.location.href = "/findBet.html"; //TODO// MAKE IT PHP and open directly to questions created
 			});
     }
   });

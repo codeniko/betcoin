@@ -21,6 +21,15 @@ if (isset($_GET['createBet'])) {
 	$result = $db->query("SELECT last_insert_rowid()");
 	$row = $result->fetchArray();
 	$questionId = $row[0];
+/*	
+	$datetime = explode(" ", $_POST['endstamp']);
+	$d = new DateTime( $datetime[0] );
+	$timestamp = $d->format( 'U' );
+	$times = explode(":", $datetime[1]);
+	$timestamp += $times[0]*60*60 + $times[1]*60;
+ */
+
+
 	$options = explode(",", $_POST['options']);
 	$i = 0;
 	foreach($options as $opt) {
@@ -66,14 +75,14 @@ if (isset($_GET['createBet'])) {
       <div class="row">
         <div class="small-4 small-centered columns">
 			<?php 
-				if ($_COOKIE['uid'] == 1)
-					echo '<img src="images/niko.jpg">';
-				else if ($_COOKIE['uid'] == 2)
+				if ($_COOKIE['uid'] == 2)
 					echo '<img src="images/profile.jpg">';
 				else if ($_COOKIE['uid'] == 3)
 					echo '<img src="images/apexa.jpg">';
 				else if ($_COOKIE['uid'] == 4)
 					echo '<img src="images/frank.jpg">';
+				else
+					echo '<img src="images/niko.jpg">';
 			?>
         </div>
       </div>

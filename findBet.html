@@ -46,12 +46,12 @@
 					alert("There are no active bets right now.");
 					return;
 				}
+				var obj = jQuery.parseJSON(data);
 				var currentPot = 0;
-			/*	for (var i = 0; i < data.bets.length; i++)
-					currentPot += data.bets[i];
-				$("#curPot").text("Current Pot: "+currentPot+" bitcoins");
-			*/	$("#curQuestion").text(data.question);
-				//for curBets, it's data.bets[], example: "bets":[{"uid":2, "amount":0.001}, {"uid":0, "amount":0.005}] where uid is USERID... will be replaced with username
+				for (var i = 0; i < obj.bets.length; i++)
+					currentPot += obj.bets[i];
+				$("#curPot").html("Current Pot: "+currentPot+" bitcoins");
+				$("#curQuestion").html(obj.question);
 			});
 	}
 

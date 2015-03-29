@@ -29,12 +29,12 @@ if (isLoggedIn()) {
       </div>
       <div class="row">
         <div class="small-4 small-centered columns">
-          <a href="#" class="expand button">Register</a>
+          <a class="expand button register-button">Register</a>
         </div>
       </div>
       <div class="row">
         <div class="small-4 small-centered columns">
-          <a href="#" class="expand button">About</a>
+          <a href="#" class="expand button about-button">About</a>
         </div>
       </div>
     </div>

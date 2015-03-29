@@ -32,11 +32,15 @@ h1 {
   font-weight: bold;
 }
 
-.home {
+.subtitle {
   font-size: 40px;
   font-weight: bold;
 }
 
-.home:hover {
+.subtitle:hover, .curPot:hover, .numBets:hover {
   color: #008CBA;
+}
+
+.curPot, .numBets{
+  font-size: 30px;
 }

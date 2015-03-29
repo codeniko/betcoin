@@ -3,20 +3,40 @@
   <head>
     <link rel="stylesheet" type="text/css" href="lib/foundation/css/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="lib/foundation/css/foundation.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="lib/vex/css/vex.css"/>
     <link rel="stylesheet" type="text/css" href="lib/vex/css/vex-theme-os.css"/>
     <link rel="stylesheet" type="text/css" href="css/betcoin.css"/>
   </head>
   <body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Betcoin</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="home.php" class="home-button">Home</a></li>
+          <li><a href="logout.php" class="logout-button">Logout</a></li>
+        </ul>
+      </section>
+    </nav>
     <div class="container">
       <div class="row">
         <div class="small-6 small-centered columns">
-          <h1 id="curQuestion"> Question Goes Here! </h1>
+          <h1 id="curQuestion" class="subtitle"> Question Goes Here! </h1>
         </div>
       </div>
       <div class="row">
         <div class="small-6 small-centered columns">
-          <h1 id="curPot"> Current Pot: $100 </h1>
+          <h1 id="curPot" class="curPot"> Current Pot: $100 </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 small-centered columns">
+          <h1 id="numBets" class="numBets"> Number of Bets: 200 </h1>
         </div>
       </div>
       <div class="row">
@@ -25,11 +45,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="user-bets">
-          <div id="curBets" class="small-10 small-centered columns">
-            LIST OF BETS GO HERE
-          </div>
-          <hr>
+        <div class="small-4 small-centered columns">
+          <a href="#" class="expand button">Next</a>
         </div>
       </div>
     </div>

@@ -16,9 +16,15 @@ function openCreateBetModal() {
         return console.log('Cancelled');
       }
       console.log('Date', data.date, 'Time', data.time);
-      return $('.demo-result-custom-vex-dialog').show().html(
+    /*  $('.demo-result-custom-vex-dialog').show().html(
         "<h4>Result</h4>\n<p>\n Date: <b>" + data.date + "</b><br/>\n " +
         "Time: <input type=\"time\" value=\"" + data.time + "\" readonly />\n</p>");
+*/
+		$.post( "home.php?createBet", { question: data.bet, endstamp: data.date + " " + data.time, options: data.choices })
+			.done(function( res ) {
+				console.log("home.php?createBet result: " + res);
+				//window.location.href = "/findBet.html"; //TODO// MAKE IT PHP and open directly to questions created
+			});
     }
   });
 }

@@ -7,7 +7,7 @@ if (isLoggedIn() == false) {
 
 if (isset($_GET['count'])) { // count of how many are still active
 	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
-} else {
+} else { // return some random bet
 	$results = $db->query("SELECT COUNT(*) FROM questions WHERE ended = 0");
 	$count = $results->fetchArray();
 	$random = rand(0, $count-1); //return the values of this row

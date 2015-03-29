@@ -14,12 +14,16 @@ if (isset($_GET['getWinsLoss'])) {
 
 if (isset($_GET['createBet'])) {
 	//question, endstamp
-	$results = $db->exec("INSERT INTO questions VALUES(".sqlite_escape_string($_COOKIE['uid']).", '".sqlite_escape_string($_POST['question'])."', ".$_POST['endstamp'].", 0)");
-	$questionId = sqlite3_last_insert_rowid();
+	print_r($_POST);
+	$results = $db->exec("INSERT INTO questions VALUES(".$_COOKIE['uid'].", '".$_POST['question']."', '".$_POST['endstamp']."', 0)");
+	//$questionId = sqlite_last_insert_rowid($results);
+	$result = $db->query("SELECT last_insert_rowid()");
+	$row = $result->fetchArray();
+	$questionId = $row[0];
 	$options = explode(",", $_POST['options']);
 	$i = 0;
-	foreach($option as $opt) {
-		$results = $db->exec("INSERT INTO options VALUES(".sqlite_escape_string($questionId).", ".$i.", '".sqlite_escape_string($opt)."')");
+	foreach($options as $opt) {
+		$results = $db->exec("INSERT INTO options VALUES(".$questionId.", ".$i.", '".$opt."')");
 		$i++;
 	}
 	

@@ -35,9 +35,6 @@ h1 {
 .subtitle {
   font-size: 40px;
   font-weight: bold;
-}
-
-.subtitle:hover, .curPot:hover, .numBets:hover, .betEnds:hover {
   color: #008CBA;
 }
 

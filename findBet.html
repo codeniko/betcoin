@@ -36,6 +36,11 @@
       </div>
       <div class="row">
         <div class="small-6 small-centered columns">
+          <h1 id="betEnds" class="betEnds"> Bet Ends: </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 small-centered columns">
           <h1 id="numBets" class="numBets"> Number of Bets: 200 </h1>
         </div>
       </div>
@@ -119,6 +124,7 @@ $('.place-bet-button').click(function() {
 				$("#curQuestion").html(obj.question);
 				$("#numBets").html("Number of bets: " + obj.bets.length);
 				global_qid = obj.qid;
+				$("#betEnds").html("Bet Ends: " + obj.endstamp);
 				options = obj.options;
 			});
 	}

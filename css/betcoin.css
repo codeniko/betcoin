@@ -37,10 +37,14 @@ h1 {
   font-weight: bold;
 }
 
-.subtitle:hover, .curPot:hover, .numBets:hover {
+.subtitle:hover, .curPot:hover, .numBets:hover, .betEnds:hover {
   color: #008CBA;
 }
 
-.curPot, .numBets{
+.curPot {
   font-size: 30px;
+}
+
+.numBets, .betEnds {
+  font-size: 15px;
 }

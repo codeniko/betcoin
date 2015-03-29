@@ -63,7 +63,10 @@ function openRegisterModal() {
 function openAboutModal() {
   vex.defaultOptions.className = 'vex-theme-os';
   vex.dialog.open({
-    message: 'About is gonna go here'
+    message: 'Either create a new bet for others to play or place a bet ' +
+        'on an existing question! If there is one winner after the end time ' +
+        'then he gets the pot. If there are mutiple winners, they split the ' +
+        'pot. Bets are placed using bitcoins!'
   });
 
 }

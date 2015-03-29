@@ -1,15 +1,17 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="static/lib/foundation/css/normalize.css"/>
-    <link rel="stylesheet" type="text/css" href="static/lib/foundation/css/foundation.css"/>
-    <link rel="stylesheet" type="text/css" href="static/css/betcoin.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/foundation/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/foundation/css/foundation.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/vex/css/vex.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/vex/css/vex-theme-os.css"/>
+    <link rel="stylesheet" type="text/css" href="css/betcoin.css"/>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="small-4 small-centered columns">
-          PERSON'S IMAGE
+          <img src="images/profile.jpg">
         </div>
       </div>
       <div class="row">
@@ -31,9 +33,12 @@
       </div>
       <div class="row">
         <div class="small-4 small-centered columns">
-          <a href="#" class="expand button">Create a New Bet</a>
+          <a href="#" class="expand button create-bet-button">Create a New Bet</a>
         </div>
       </div>
     </div>
+    <script src="/lib/jquery-1.11.2.js"></script>
+    <script src="/lib/vex/js/vex.combined.min.js"></script>
+    <script src="/js/createBet.js"></script>
   </body>
 </html>
